@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/general.cshtml";
+}
+<h2 class="text-center">Product</h2>
+<div class="row">
+    <div class="col-sm-2">
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                SubCategory List
+            </a>
+            @{
+                if (ViewBag.subcat != null)
+                {
+                    foreach (var cat in ViewBag.subcat.Rows)
+                    {
+
+
+                        <a href="/home/product?cid=@cat[1]&scat=@cat[0]" class="list-group-item list-group-item-action">
+                            <img src="~/Content/subcatpic/@cat[3]" height="30px" width="30px" />&nbsp;&nbsp;&nbsp;&nbsp;@cat[2]
+                        </a>
+                    }
+                }
+            }
+
+        </div>
+    </div>
+    <div class="col-sm-10">
+        <div class="row">
+        @{
+            if (ViewBag.product1 != null)
+            {
+                foreach (var p1 in ViewBag.product1.Rows)
+                {
+
+                    <div class="col-lg-2 col-md-4 col-sm-12 py-2">
+                        <div class="card mb-3">
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+                                @p1[11]%
+                                <span class="visually-hidden">unread messages</span>
+                            </span>
+                            <img src="~/Content/productpic/@p1[9]" class="card-img-top " style="height:100px;" />
+                            <div class="card-body p-3">
+                                <b>@p1[3]</b><br />
+                                <small class="text-muted"> @p1[8] </small>
+                                <p class="mt-1">
+                                    <i class="fa-solid fa-indian-rupee-sign"></i>
+                                    <s>@p1[6]/-</s>&emsp;<b>@p1[7]/-</b>
+                                </p>
+                                <form action=" /home/addtocart" method="post">
+                                    <input type="hidden" name="salerate" value="@p1[7]" />
+                                    <input type="hidden" name="pid" value="@p1[0]" />
+                                    <div class="input-group">
+                                        <b class="input-group-text" onclick="mFun(@p1[0])">
+                                            <i class="fa-solid fa-minus"></i>
+                                        </b>
+                                        <input name="qunatity" type="text" id="txtcard_@p1[0]" class="form-control text-center fs-5 " value="0" />
+                                        <b class="input-group-text" onclick="pFun(@p1[0])">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </b>
+                                    </div>
+                                    <input type="submit" value="Add" class="btn bg-mycolor text-light mt-1" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+            
+    </div>
+</div>
+    </div>
+<script>
+
+    var i = 0
+    function pFun(id) {
+
+        var t = document.getElementById("txtcard_" + id)
+        i = t.value;
+        i++;
+        t.value = i;
+        //alert(i)
+    }
+    function mFun(id) {
+        var t = document.getElementById("txtcard_" + id)
+        i = t.value;
+        if (i > 0) {
+            i--;
+            t.value = i;
+        }
+    }
+   
+    </script>

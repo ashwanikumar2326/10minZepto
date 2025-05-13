@@ -1,0 +1,134 @@
+﻿@{
+    ViewBag.Title = "product";
+    Layout = "~/Views/Shared/admin.cshtml";
+}
+<div class="row p-5 ">
+    <!-- satrting of form card-->
+    <div class=" col-sm-6 mx-auto p-3 " style="box-shadow: 8px 8px 10px grey; background: #eeeeee; border: 2px solid black; border-radius: 3px; ">
+        <div class="card-body">
+            <h4 class="card-title text-center" style="color:#c6003d"> ADD PRODUCT</h4>
+            <form method="post" enctype="multipart/form-data">
+                <div class="row pt-4">
+                    <div class="col">
+                        <label for="exampleInputEmail"><b>Choose Category</b></label>
+                        <select class="form-select form-select-lg mb-3" name="pcat">
+                            <option value="0">Choose Product Category</option>
+
+                            @{
+                                if (ViewBag.category != null)
+                                {
+                                    foreach (var data in ViewBag.category.Rows)
+                                    {
+                                        <option value="@data[0]">@data[1]</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="exampleInputEmail"><b>Choose SubCategory</b></label>
+                        <select class="form-select form-select-lg mb-3" name="psubcat">
+                            <option value="0"> Choose Product Subctegory</option>
+
+                            @{
+                                if (ViewBag.subcat != null)
+                                {
+                                    foreach (var data in ViewBag.subcat.Rows)
+                                    {
+                                        <option value="@data[0]">@data[2]</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <lable for="exampleInputEmail"><b>Product Name</b></lable>
+                    <input type="text" name="pname" class="form-control" id="pname" aria-describedby="Product" placeholder="" />
+                </div>
+                <div class="form-group mt-3">
+                    <lable for="exampleInputEmail"><b>Product Details</b></lable>
+                    <input type="text" name="pdesc" class="form-control" id="description" aria-describedby="Product" placeholder="" />
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <lable for="exampleInputEmail"><b>Model</b></lable>
+                        <input type="text" name="pmodel" class="form-control" id="pmodel" areadescribedby="Product" />
+                    </div>
+                    <div class="col-sm-6">
+                        <lable for="exampleInputEmail"><b>Pack/Size</b></lable>
+                        <input type="text" name="psize" class="form-control" id="psize" areadescribedby="Product" />
+                    </div>
+                    <div class="row ">
+                        <div class="col-sm-6 pr-2">
+                            <lable for="exampleInputEmail"><b>Sale Rate</b></lable>
+                            <input type="text" name="psalerate" class="form-control" />
+                        </div>
+                        <div class="col-sm-6 ">
+                            <lable for="exampleInputEmail"><b>MRP</b></lable>
+                            <input type="text" name="pmrp" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <lable for="ExampleInputEmail"><b>Choose Picture</b></lable>
+                            <input type="file" name="picon" class="form-control" id="picon" aria-describedby="Product" />
+                        </div>
+
+                        <div class="col">
+                            <input class="btn btn-danger  mt-3" type="submit" style="background:#c6003d" value="ADD PRODUCT NOW" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--End Category-->
+    <div class="col-sm-12 mt-5 card text-center "style="border:3px solid black;">
+        <div class="card-body ">
+            <table class="table table-bordered table-striped "style="border:3px solid black;">
+                <thead >
+                    <tr >
+                        <th class="bg-primary">S.No</th>
+                        <th class="bg-primary">Category Name</th>
+                        <th class="bg-primary">Subcategory Name</th>
+                        <th class="bg-primary">Product Name</th>
+                        <th class="bg-primary">Details</th>
+                        <th class="bg-primary">Model</th>
+                        <th class="bg-primary">MRP</th>
+                        <th class="bg-primary">Salerate</th>
+                        <th class="bg-primary">pack/Size</th>
+                        <th class="bg-primary">pic</th>
+                        <th class="bg-primary">Date</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                   @{ 
+                       if (ViewBag.product!=null)
+                       {
+                           foreach(var pr in ViewBag.product.Rows)
+                {
+                    <tr>
+                        <td>@pr[0]</td>
+                        <td>@pr[1]</td>
+                        <td>@pr[2]</td>
+                        <td>@pr[3]</td>
+                        <td>@pr[4]</td>
+                        <td>@pr[5]</td>
+                        <td>@pr[6]</td>
+                        <td>@pr[7]</td>
+                        <td>@pr[8]</td>
+                        <td><img src="~/Content/productpic/@pr[9]" height="60px"width="60px"/></td>
+                        <td>@pr[10]</td>
+                    </tr>
+                    
+                }
+                       }
+                   }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

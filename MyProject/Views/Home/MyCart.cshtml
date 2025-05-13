@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "MyCart";
+    Layout = "~/Views/Shared/general.cshtml";
+}
+<style>
+    .c {
+        font-family: Cooper;
+    }
+
+    .x1 {
+        color: #311B92;
+    }
+
+    .a2 {
+        min-height: 500px;
+    }
+
+    .b {
+        background: lightgrey;
+    }
+</style>
+<h1 class="c text-center x1">CART</h1>
+<div class="row p-4 a2 ">
+    <div class="col-sm-8 text-start m-1 b bg-light">
+        <!--column 1 start-->
+        @{
+            int total = 0;
+            if (ViewBag.cart != null)
+            {
+                if (ViewBag.cart.Rows.Count > 0)
+                {
+
+                    foreach (var c in ViewBag.cart.Rows)
+                    {
+                        <div class="row mt-3 me-5 ">
+                            <div class="col-sm-2 mx-1 ">
+                                <img src="~/Content/productpic/@c[9]" height="70px" width="70px" />
+                            </div>
+                            <div class="col-sm-3">
+                                <b class="c">@c[3]</b><br />
+                                <small>pack/Size :@c[8]</small><br />
+                                <small>Model:@c[5]</small>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <b class="c">Quantity:@c[14] Items</b><br />
+                            </div>
+
+
+                            <div class="col-sm-1 c text-center ">
+                                <b>Total</b><br />
+                                <b>@c[15]</b>
+                                @{total = total + Convert.ToInt32(c[15]);}
+                            </div>
+                            <div class="col-sm-1 text-danger mt-3  me-5">
+                               <a href="/home/deleteitem?cid=@c[11]" style="text-decoration:none;"> <i class="fa-solid fa-trash text-danger"></i></a>
+                            </div>
+
+                        </div>
+                    }
+                }
+            }
+        }
+        <!--column 1 end-->
+        <!--Colum 2 -->
+        </div>
+
+
+    <div class="col-sm-3 ms-5 bg-light card p-4" style="background:lightgrey;max-height:400px;">
+        <h5 class="text-center">Billing Details</h5>
+        <div class="row">
+            <div class="col-sm-6">
+                <br />
+                <p class="text-start ps-2">Sub Total :@total</p>
+                <p class="text-start ps-2">Deleviery Charge :30Rs.</p>
+                <p class="text-start ps-2">Discount :</p>
+                <br />
+                <br />
+                <b class="text-start ps-2">Total(INR) :@(total+30)</b>
+            </div>
+ 
+            <center><input type="button"onclick="proceed()"
+                           value="Proceed to Checkout" class="btn btn-danger w-75 mt-3" /></center>
+        </div>
+
+    </div>
+</div>
+<script>
+    function proceed() {
+        //alert('ok')
+        var res = confirm("Do you want to order all products?");
+        if (res) {
+            location.href = "/home/order";
+        }
+        else {
+            return false;
+        }
+    }
+</script>

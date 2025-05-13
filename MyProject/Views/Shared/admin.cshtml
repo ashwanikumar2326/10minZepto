@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/css/all.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/Content/js/bootstrap.bundle.js"></script>
+</head>
+<body>
+    <div class="row text-bg-dark text-center">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+cx
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            Welcome to Admin Zone
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+
+        </div>
+    </div>
+    <div class="row menu">
+        @*Start menu*@
+        <nav class="navbar navbar-dark bg-primary sticky-top" style="margin-top:.1%;">
+            <div class="container-fluid ps-5">
+                <a class="navbar-brand fs-2" href="#">10Min<b class="text-dark">Zepto<i class="fa-brands fa-shopify"></i></b> </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="~/Admin/Index">Dashboard <i class="fa-solid fa-bars"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="~/Admin/Category">Category</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="~/Admin/subcategory">Sub Category</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="~/Admin/Product">Product</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="~/Admin/">Management</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="~/Admin/">Cart</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="~/Admin/">Orders</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="~/Admin/Changepassword">Change Password</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="~/Admin/logout">LogOut</a>
+                            </li>
+                        </div>
+                </div>
+            </div>
+        </nav>
+
+        @*end menu*@
+
+    </div>
+    <div class="row">
+        <div class="col-sm-12 py-3" style="min-height:700px;">
+            @RenderBody()
+        </div>
+    </div>
+    <div class="row footer text-bg-dark text-center py-4 fs-3" >
+        <div class="col-sm-6">&copy;
+        <a style="text-decoration:none;color:white;" href="httpa://www.techpile.in">Techpile Technology(P)Ltd.</a></div>
+        <div class="col-sm-6">
+            <b>Design and Developed By :</b>Mr. Ashwin Kumar
+        </div>
+    </div>
+</body>
+</html>

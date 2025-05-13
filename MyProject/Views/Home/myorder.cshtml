@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "myorder";
+    Layout = "~/Views/Shared/general.cshtml";
+}
+<div class="container mt-4">
+    <h2>Pending Order</h2>
+    <hr />
+    @{
+        if (ViewBag.order != null)
+        {
+            if (ViewBag.order.Rows.Count > 0)
+            {
+                foreach (var d in ViewBag.order.Rows)
+                {
+                    <div class="col-sm-12">
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-md-3">
+                                    <img src="~/Content//productpic/@d[9]" class="img-fluid rounded-start" alt="..." style="height:100px;">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="card-body">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Product</th>
+                                                    <th scope="col">Quantity</th>
+                                                    <th scope="col">Subtotal</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Order Date</th>
+                                                    <th scope="col">Want to Cancel</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <b>@d[3]</b><br />
+                                                        @d[8] &nbsp;&nbsp;&nbsp;&nbsp;@d[5]
+                                                    </td>
+                                                    <td>@d[15]</td>
+                                                    <td>@d[16]</td>
+                                                    <td><button class="btn btn-danger">@d[18]</button></td>
+                                                    <td>@d[19]</td>
+                                                    <td>
+                                                        <input type="button" class="btn btn-outline-danger" value=" Cancel Order" />
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            }
+        }
+    }
+</div>

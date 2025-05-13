@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "OrderManagement";
+    Layout = "~/Views/Shared/admin.cshtml";
+}
+
+<center><h2>OrderManagement</h2></center>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-9">
+            <table style="width:100%;padding:5%;" class="table table-bordered table-striped-columns">
+                <tr>
+                    <th>SR No</th>
+                    <th>customer Name</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Oder Date</th>
+                    <th>Status</th>
+                </tr>
+                @{
+                    foreach (var date in ViewBag.Date.Rows)
+                    {
+                        <tr>
+                            <td>@data[0]</td>
+                            <td>@data[10]</td>
+                            <td>@data[9]</td>
+                            <td>@data[3]</td>
+                            <td>@data[4]</td>
+                            <td>@data[8]</td>
+                            <td>@data[7]</td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    </div>
+</div>
+

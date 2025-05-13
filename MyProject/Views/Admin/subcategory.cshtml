@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "subcategory";
+    Layout = "~/Views/Shared/admin.cshtml";
+}
+<div class="row p-4">
+    <div class="col-sm-4 pt-3 mx-auto "style="background: #eeeeee; box-shadow: 8px 8px 10px grey; border: 2px solid black;border-radius:3px; ">
+        <div class="card-body mb-3">
+            <h4 class="card-title" style="color:#c6003d;">SUB CATEGORY</h4>
+            <form method="post" enctype="multipart/form-data">
+                <div class="form-group mt-3">
+                    <label for="exampleInputEmail">Choose Category</label><br />
+                    <div class="col-sm-12 form-group">
+                        <select class="form-select form-select-lg mb-3" name="category" aria-describedby="category">
+                            <option value="0">Choose Category</option>
+                            @{
+                                if (ViewBag.subcat != null)
+                                {
+                                    foreach (var data in ViewBag.subcat.Rows)
+                                    {
+                                        <option value="@data[0]">@data[1]</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <label for="exampleInputEmail">Sub Category Name</label>
+                    <input type="text" required name="subcatname" class="form-control" id="catname" aria-describedby="Category" />
+
+                </div>
+                <div class="form-group mt-3">
+                    <label for="exampleInputEmail">Sub Category Icon</label>
+                    <input type="file" required name="subcaticon" class="form-control" id="caticon" aria-describedby="Category" />
+                </div>
+                <input class="btn btn-danger mt-3" type="submit" style="background:#c6003d;" value="ADD NOW" />
+
+            </form>
+        </div>
+
+
+    </div>
+    <!--asdkjbsufhwec-->
+    <div class="col-sm-10 ms-5 card text-center mt-5 "style="border: 3px solid black;">
+        <div>
+            <table class="table table-bordered table-striped"style="border:3px solid black;">
+                <thead>
+                    <tr >
+                        <th class="bg-info">No.</th>
+                        <th class="bg-info">Choose Category</th>
+                        <th class="bg-info">Sub Category Name</th>
+                        <th class="bg-info">Sub Category Icon</th>
+                        <th class="bg-info">Action</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    @{
+                        if (ViewBag.subcategory != null)
+                        {
+                            foreach (var data in ViewBag.subcategory.Rows)
+                            {
+                                <tr>
+                                    <td>@data[0]</td>
+                                    <td>@data[1]</td>
+                                    <td>@data[2]</td>
+                                    <td><img src="~/Content/subcatpic/@data[3]" height="50px" width="50px"/></td>
+                                    <td><i class="fa-solid fa-trash"></i></td>
+                                </tr>
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        </div>
+
+    </div>
+
